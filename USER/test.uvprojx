@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\MPU6050;..\HARDWARE\DMP;..\HARDWARE\EXTI;..\HARDWARE\CONTROL;..\HARDWARE\filter;..\HARDWARE\ENCODER</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\MPU6050;..\HARDWARE\DMP;..\HARDWARE\EXTI;..\HARDWARE\CONTROL;..\HARDWARE\filter;..\HARDWARE\ENCODER;..\HARDWARE\show;..\HARDWARE\DataScope_DP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -468,6 +468,16 @@
               <FileName>encoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ENCODER\encoder.c</FilePath>
+            </File>
+            <File>
+              <FileName>show.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\show\show.c</FilePath>
+            </File>
+            <File>
+              <FileName>DataScope_DP.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DataScope_DP\DataScope_DP.C</FilePath>
             </File>
           </Files>
         </Group>

@@ -21,6 +21,8 @@
 #include "control.h"
 #include "filter.h"
 #include "encoder.h"
+#include "show.h"
+#include "DataScope_DP.h"
 
 extern u8 Way_Angle;                                      //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波
 extern int Encoder_Left,Encoder_Right;                     //左右编码器的脉冲计数

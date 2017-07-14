@@ -47,6 +47,11 @@ int main(void)
 			if(times%200==0)printf("ÇëÊäÈëÊı¾İ,ÒÔ»Ø³µ¼ü½áÊø\r\n");  
 			delay_ms(10);   
 		}
+		DataScope();
+		delay_flag=1;	
+		delay_50=0;
+		while(delay_flag);	     //Í¨¹ıMPU6050µÄINTÖĞ¶ÏÊµÏÖµÄ50ms¾«×¼ÑÓÊ
+		
 	}		 
 }
 
