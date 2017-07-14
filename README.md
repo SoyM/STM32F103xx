@@ -1,4 +1,5 @@
 # STM32F103xx
+基于STM32F103C8T6（ARM Cortex-M3内核）开发的项目，开发工具为keil uvision5和vs2017.
 ## 项目结构
 ### USER
 * **test.c** -主文件
