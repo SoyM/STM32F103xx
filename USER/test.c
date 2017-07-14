@@ -17,11 +17,16 @@ u16 PID_Parameter[10],Flash_Parameter[10];  //Flash相关数组
 int main(void)
 {								  
 	u16 t,len,times;
-	Stm32_Clock_Init(9);	//系统时钟设置
-	uart_init(72,115200); 	//串口初始化为115200
-	delay_init(72);	   	 	//延时初始化 
-	LED_Init();		  		//初始化与LED连接的硬件接口 
+	Stm32_Clock_Init(9);	
+	uart_init(72,115200); 	
+	delay_init(72);	   	 	 
+	LED_Init();
+	Encoder_Init_TIM2();           
+	Encoder_Init_TIM3();           
 	IIC_Init();
+	MPU6050_initialize();
+	DMP_Init();
+	EXTI_Init();
  	while(1)
 	{
 		Led_Flash(100);
