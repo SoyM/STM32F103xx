@@ -91,6 +91,7 @@ void APP_Show(void)
 返回  值：无
 作    者：平衡小车之家
 **************************************************************************/
+
 void DataScope(void)
 {   
 		DataScope_Get_Channel_Data( Pitch, 1 );       

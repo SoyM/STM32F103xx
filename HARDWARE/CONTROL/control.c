@@ -16,7 +16,8 @@ int EXTI3_IRQHandler(void)
 		  EXTI->PR=1<<3;                                                      //===清除LINE3上的中断标志位      
 		   if(delay_flag==1)
 		  {
-				 if(++delay_50==10)	 delay_50=0,delay_flag=0;                     //给主函数提供50ms的精准延时
+				 if(++delay_50==10)	 
+					 delay_50=0,delay_flag=0;                     //给主函数提供50ms的精准延时
 			 }
 		  Encoder_Left=Read_Encoder(2);                                      //===读取编码器的值
 			Encoder_Right=Read_Encoder(3);                                      //===读取编码器的值

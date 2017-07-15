@@ -12,46 +12,50 @@ u32 Distance;                               //³¬Éù²¨²â¾à
 u8 delay_50,delay_flag,Bi_zhang=0,PID_Send,Flash_Send;   //Ä¬ÈÏÇé¿öÏÂ
 float Acceleration_Z;                       //ZÖá¼ÓËÙ¶È¼Æ  
 float PA=100,PB=500,PC=888,PD=6813;//PID²ÎÊı
-u16 PID_Parameter[10],Flash_Parameter[10];  //FlashÏà¹ØÊı×é		
+u16 PID_Parameter[10],Flash_Parameter[10];  //FlashÏà¹ØÊı×é	
 
 int main(void)
 {								  
-	u16 t,len,times;
-	Stm32_Clock_Init(9);	
+//	u16 t,len,times;
+	Stm32_Clock_Init(9);
+	delay_init(72);	 	
 	uart_init(72,115200); 	
-	delay_init(72);	   	 	 
+	JTAG_Set(JTAG_SWD_DISABLE); 
+	JTAG_Set(SWD_ENABLE);
 	LED_Init();
+	KEY_Init();
 	Encoder_Init_TIM2();           
 	Encoder_Init_TIM3();           
 	IIC_Init();
 	MPU6050_initialize();
 	DMP_Init();
 	EXTI_Init();
+	LED=0;
  	while(1)
 	{
-		Led_Flash(100);
-		if(USART_RX_STA&0x8000)
-		{					   
-			len=USART_RX_STA&0x3FFF;//µÃµ½´Ë´Î½ÓÊÕµ½µÄÊı¾İ³¤¶È
-			printf("\r\nÄú·¢ËÍµÄÏûÏ¢Îª:\r\n\r\n");
-			for(t=0;t<len;t++)
-			{
-				USART1->DR=USART_RX_BUF[t];
-				while((USART1->SR&0X40)==0);//µÈ´ı·¢ËÍ½áÊø
-			}
-			printf("\r\n\r\n");//²åÈë»»ĞĞ
-			USART_RX_STA=0;
-		}else
-		{
-			times++;
-			if(times%200==0)printf("ÇëÊäÈëÊı¾İ,ÒÔ»Ø³µ¼ü½áÊø\r\n");  
-			delay_ms(10);   
-		}
+    //Led_Flash(100);
+//		if(USART_RX_STA&0x8000)
+//		{					   
+//			len=USART_RX_STA&0x3FFF;//µÃµ½´Ë´Î½ÓÊÕµ½µÄÊı¾İ³¤¶È
+//			printf("\r\nÄú·¢ËÍµÄÏûÏ¢Îª:\r\n\r\n");
+//			for(t=0;t<len;t++)
+//			{
+//				USART1->DR=USART_RX_BUF[t];
+//				while((USART1->SR&0X40)==0);//µÈ´ı·¢ËÍ½áÊø
+//			}
+//			printf("\r\n\r\n");//²åÈë»»ĞĞ
+//			USART_RX_STA=0;
+//		}else
+//		{
+//			times++;
+//			if(times%200==0)printf("ÇëÊäÈëÊı¾İ,ÒÔ»Ø³µ¼ü½áÊø\r\n");  
+//			delay_ms(10);   
+//		}
 		DataScope();
 		delay_flag=1;	
 		delay_50=0;
 		while(delay_flag);	     //Í¨¹ıMPU6050µÄINTÖĞ¶ÏÊµÏÖµÄ50ms¾«×¼ÑÓÊ
-		
+
 	}		 
 }
 
