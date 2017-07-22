@@ -13,7 +13,7 @@ u8 delay_50,delay_flag,Bi_zhang=0,PID_Send,Flash_Send;   //Ä¬ÈÏÇé¿öÏÂ
 float Acceleration_Z;                       //ZÖá¼ÓËÙ¶È¼Æ  
 float PA=100,PB=500,PC=888,PD=6813;//PID²ÎÊý
 u16 PID_Parameter[10],Flash_Parameter[10];  //FlashÏà¹ØÊý×é	
-
+u8 temp, humi, humi_dec, temp_dec;
 int main(void)
 {								  
 	Stm32_Clock_Init(9);
@@ -22,21 +22,28 @@ int main(void)
 	JTAG_Set(JTAG_SWD_DISABLE); 
 	JTAG_Set(SWD_ENABLE);
 	LED_Init();
-	KEY_Init();
+	//KEY_Init();
+	DHT11_init();
+	/*
 	Encoder_Init_TIM2();           
 	Encoder_Init_TIM3();           
 	IIC_Init();
 	MPU6050_initialize();
 	DMP_Init();
-	EXTI_Init();
+	EXTI_Init();  */
 	LED=0;
  	while(1)
-	{
+	{/*
 		DataScope();
 		delay_flag=1;	
 		delay_50=0;
 		while(delay_flag);	     //Í¨¹ýMPU6050µÄINTÖÐ¶ÏÊµÏÖµÄ50ms¾«×¼ÑÓÊ
-		//uart_receive();
+		//uart_receive(); */
+		delay_ms(1000);
+		delay_ms(1000);
+		DHT11_Read_Data(&humi,&temp,&humi_dec,&temp_dec);
+		printf("temp:%d.%d,humi:%d.%d\n",temp,temp_dec,humi,humi_dec);
+		LED=~LED;
 	}		 
 }
 
