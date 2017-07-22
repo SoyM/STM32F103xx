@@ -18,12 +18,13 @@ int main(void)
 {								  
 	Stm32_Clock_Init(9);
 	delay_init(72);	 	
-	uart_init(72,115200); 	
+	uart_init(72,115200); 
+	uart2_init(36,9600);	
 	JTAG_Set(JTAG_SWD_DISABLE); 
 	JTAG_Set(SWD_ENABLE);
 	LED_Init();
 	//KEY_Init();
-	DHT11_init();
+	//DHT11_init();
 	/*
 	Encoder_Init_TIM2();           
 	Encoder_Init_TIM3();           
@@ -41,9 +42,10 @@ int main(void)
 		//uart_receive(); */
 		delay_ms(1000);
 		delay_ms(1000);
-		DHT11_Read_Data(&humi,&temp,&humi_dec,&temp_dec);
-		printf("temp:%d.%d,humi:%d.%d\n",temp,temp_dec,humi,humi_dec);
-		LED=~LED;
+		//if(DHT11_Read_Data(&humi,&temp,&humi_dec,&temp_dec)){	
+		//printf("temp:%d.%d,humi:%d.%d\n",temp,temp_dec,humi,humi_dec);
+		//}
+		
 	}		 
 }
 
