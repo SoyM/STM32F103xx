@@ -31,7 +31,7 @@ int main(void)
 	MPU6050_initialize();
 	DMP_Init();
 	EXTI_Init();  */
-	//HC_SR04_init();
+	HC_SR04_init();
 	TIM3_Cap_Init(0XFFFF,71);
 	LED=0;
  	while(1)

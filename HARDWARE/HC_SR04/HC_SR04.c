@@ -1,8 +1,5 @@
-//è¶…å£°æ³¢æµ‹è·æ¨¡å—
+//³¬Éù²¨²â¾àÄ£¿é,PB0ÊäÈë-echo£¬PB1Êä³ö-trig¡£
 #include "HC_SR04.h"
-
-#define HC_ECHO PBin(12)
-#define HC_TRIG PBout(13)
 
 void HC_SR04_init(void){
 	RCC->APB2ENR|=1<<3;
@@ -11,18 +8,68 @@ void HC_SR04_init(void){
 	//GPIOB->ODR|=1<<12;
 }
 
-void HC_SR04_run(void){
-	u8 retry=0;
-	float s;
-	HC_TRIG=1;
-	delay_us(20);
-	HC_TRIG=0;
-	while(!HC_ECHO);
-	while(HC_ECHO){
-		retry++;
-		//printf("%d\n",retry);
-	}
-	s=(retry*1.87)/100;
-	printf("s-%f\n",s);
-	
+/**************************************************************************
+º¯Êý¹¦ÄÜ£º³¬Éù²¨½ÓÊÕ»Ø²¨º¯Êý
+Èë¿Ú²ÎÊý£ºÎÞ
+·µ»Ø  Öµ£ºÎÞ
+**************************************************************************/
+u16 TIM3CH3_CAPTURE_STA,TIM3CH3_CAPTURE_VAL;
+void Read_Distane(void)
+{   
+	 PBout(1)=1;
+	 delay_us(15);  
+	 PBout(1)=0;
+		printf("R1\n");
+			if(TIM3CH3_CAPTURE_STA&0X80)//³É¹¦²¶»ñµ½ÁËÒ»´Î¸ßµçÆ½
+		{
+			Distance=TIM3CH3_CAPTURE_STA&0X3F;
+			Distance*=65536;					        //Òç³öÊ±¼ä×ÜºÍ
+			Distance+=TIM3CH3_CAPTURE_VAL;		//µÃµ½×ÜµÄ¸ßµçÆ½Ê±¼ä
+			//printf("%d \r\n",TIM3CH3_CAPTURE_VAL);
+			Distance=Distance*170/1000;
+			//printf("%d \r\n",Distance);
+			TIM3CH3_CAPTURE_STA=0;			//¿ªÆôÏÂÒ»´Î²¶»ñ
+		}				
 }
+/**************************************************************************
+º¯Êý¹¦ÄÜ£º³¬Éù²¨»Ø²¨Âö¿í¶ÁÈ¡ÖÐ¶Ï
+**************************************************************************/
+void TIM3_IRQHandler(void)
+{ 		    		  			    
+	u16 tsr;
+	tsr=TIM3->SR;
+	if((TIM3CH3_CAPTURE_STA&0X80)==0)//»¹Î´³É¹¦²¶»ñ	
+	{
+			if(tsr&0X01)//Òç³ö
+			{	   				
+					if(TIM3CH3_CAPTURE_STA&0X40)//ÒÑ¾­²¶»ñµ½¸ßµçÆ½ÁË
+					{
+						if((TIM3CH3_CAPTURE_STA&0X3F)==0X3F)//¸ßµçÆ½Ì«³¤ÁË
+						{
+							TIM3CH3_CAPTURE_STA|=0X80;//±ê¼Ç³É¹¦²¶»ñÁËÒ»´Î
+							TIM3CH3_CAPTURE_VAL=0XFFFF;
+						}
+						else 
+							TIM3CH3_CAPTURE_STA++;
+					}	 
+			}
+			if(tsr&0x08)//²¶»ñ3·¢Éú²¶»ñÊÂ¼þ
+			{	
+					if(TIM3CH3_CAPTURE_STA&0X40)		//²¶»ñµ½Ò»¸öÏÂ½µÑØ 		
+					{	  
+							TIM3CH3_CAPTURE_STA|=0X80;		//±ê¼Ç³É¹¦²¶»ñµ½Ò»´Î¸ßµçÆ½Âö¿í
+							TIM3CH3_CAPTURE_VAL=TIM3->CCR3;	//»ñÈ¡µ±Ç°µÄ²¶»ñÖµ.
+							TIM3->CCER&=~(1<<9);			//CC1P=0 ÉèÖÃÎªÉÏÉýÑØ²¶»ñ
+					}else  								//»¹Î´¿ªÊ¼,µÚÒ»´Î²¶»ñÉÏÉýÑØ
+				  {
+							TIM3CH3_CAPTURE_STA=0;			//Çå¿Õ
+							TIM3CH3_CAPTURE_VAL=0;
+							TIM3CH3_CAPTURE_STA|=0X40;		//±ê¼Ç²¶»ñµ½ÁËÉÏÉýÑØ
+							TIM3->CNT=0;					//¼ÆÊýÆ÷Çå¿Õ
+							TIM3->CCER|=1<<9; 				//CC1P=1 ÉèÖÃÎªÏÂ½µÑØ²¶»ñ
+					}		    
+			}			     	    					   
+	}
+	TIM3->SR=0;//Çå³ýÖÐ¶Ï±êÖ¾Î» 	     
+}
+

@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC-SR04</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC_SR04</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -508,6 +508,11 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>HC_SR04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\HC_SR04\HC_SR04.c</FilePath>
             </File>
           </Files>
         </Group>
