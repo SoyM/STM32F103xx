@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\LED;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\MPU6050;..\HARDWARE\DMP;..\HARDWARE\EXTI;..\HARDWARE\CONTROL;..\HARDWARE\filter;..\HARDWARE\ENCODER;..\HARDWARE\show;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC-SR04</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -483,6 +483,31 @@
               <FileName>DHT11.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\DHT11\DHT11.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\USART2\usart2.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\ADC\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\MOTOR\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>stmflash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\STMFLASH\stmflash.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
             </File>
           </Files>
         </Group>
