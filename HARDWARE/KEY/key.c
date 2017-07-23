@@ -23,7 +23,7 @@ void EXTI15_10_IRQHandler(void)
 	delay_ms(10);   //消抖			 
     if(KEY==0)		//按键
 	{
-		//Flag_Show=!Flag_Show;
+		Flag_Show=!Flag_Show;
 	}
  	EXTI->PR=1<<15; //清除LINE15上的中断标志位  
 }
