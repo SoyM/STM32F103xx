@@ -17,35 +17,49 @@ u8 temp, humi, humi_dec, temp_dec;
 int main(void)
 {								  
 	Stm32_Clock_Init(9);
-	delay_init(72);	 	
-	uart_init(72,115200); 
-	uart2_init(36,115200);	
+	delay_init(72);	 		
 	JTAG_Set(JTAG_SWD_DISABLE); 
 	JTAG_Set(SWD_ENABLE);
 	LED_Init();
-	//KEY_Init();
-	//DHT11_init();
-	/*Encoder_Init_TIM2();           
+	KEY_Init();
+	OLED_Init();  
+	uart_init(72,128000); 
+	uart2_init(36,9600);
+	MiniBalance_PWM_Init(7199,0);
+	Encoder_Init_TIM2();           
 	Encoder_Init_TIM3();           
 	IIC_Init();
 	MPU6050_initialize();
 	DMP_Init();
-	EXTI_Init();  */
-	HC_SR04_init();
-	TIM3_Cap_Init(0XFFFF,71);
-	LED=0;
+	Flash_Read(); 
+	EXTI_Init();  
+	//DHT11_init();
+	//HC_SR04_init();
+	//TIM3_Cap_Init(0XFFFF,71);
+	//LED=0;
  	while(1)
-	{/*
-		DataScope();
+	{
+	if(Flash_Send==1)          //Ð´ÈëPID²ÎÊýµ½Flash,ÓÉapp¿ØÖÆ¸ÃÖ¸Áî
+		{
+			Flash_Write();	
+			Flash_Send=0;	
+		}	
+		if(Flag_Show==0){
+			APP_Show();	
+			oled_show();             
+		}
+		else{
+			DataScope();
+		}
 		delay_flag=1;	
 		delay_50=0;
 		while(delay_flag);	     //Í¨¹ýMPU6050µÄINTÖÐ¶ÏÊµÏÖµÄ50ms¾«×¼ÑÓÊ
-		//uart_receive(); */
+		//uart_receive(); 
 		//HC_SR04_run();
-		Read_Distane();
-		printf("%d\n",Distance);
-		delay_ms(500);
-		LED=~LED;
+		//Read_Distane();
+		//printf("%d\n",Distance);
+		//delay_ms(500);
+		//LED=~LED;
 		//if(DHT11_Read_Data(&humi,&temp,&humi_dec,&temp_dec)){	
 		//printf("temp:%d.%d,humi:%d.%d\n",temp,temp_dec,humi,humi_dec);
 		//}
