@@ -1,25 +1,34 @@
 # STM32F103xx
-åŸºäºŽSTM32F103C8T6ï¼ˆARM Cortex-M3å†…æ ¸ï¼‰å¼€å‘çš„é¡¹ç›®ï¼Œå¼€å‘å·¥å…·ä¸ºkeil uvision5å’Œvs2017.
-## é¡¹ç›®ç»“æž„
+»ùÓÚSTM32F103C8T6£¨ARM Cortex-M3ÄÚºË£©¿ª·¢µÄÏîÄ¿£¬¿ª·¢¹¤¾ßÎªkeil uvision5ºÍvs2017.
+## ÏîÄ¿½á¹¹
 ### USER
-* **test.c** -ä¸»æ–‡ä»¶
+* **test.c** -Ö÷ÎÄ¼þ
 ### SYSTEM
-|æ–‡ä»¶å¤¹|åŠŸèƒ½|
+|ÎÄ¼þ¼Ð|¹¦ÄÜ|
 |---|:---|
-|**delay**|     å»¶æ—¶å‡½æ•°æ–‡ä»¶|
-|**sys**|       ç³»ç»Ÿå®šä¹‰åŠåŸºæœ¬åŠŸèƒ½å‡½æ•°æ–‡ä»¶|
-|**usart**| ä¸²å£è°ƒè¯•å‡½æ•°æ–‡ä»¶|
+|**delay**|     ÑÓÊ±º¯ÊýÎÄ¼þ|
+|**sys**|       ÏµÍ³¶¨Òå¼°»ù±¾¹¦ÄÜº¯ÊýÎÄ¼þ|
+|**usart**| ´®¿Úµ÷ÊÔº¯ÊýÎÄ¼þ|
 ### HARDWARE
-æ–‡ä»¶å¤¹|åŠŸèƒ½
+ÎÄ¼þ¼Ð|¹¦ÄÜ
 ---|:---
-**CONTROL**| ä¸­æ–­æŽ§åˆ¶æ–‡ä»¶
-**DMP**| DMPæ–‡ä»¶
-**ENCODER**| ç¼–ç åŠŸèƒ½ç›¸å…³æ–‡ä»¶
-**EXTI**| å¤–éƒ¨ä¸­æ–­æŽ§åˆ¶æ–‡ä»¶
-**filter**| æ»¤æ³¢æ–‡ä»¶
-**IIC**| IICç›¸å…³æ–‡ä»¶
-**KEY**| æŒ‰é”®æŽ§åˆ¶æ–‡ä»¶
-**LED**| LEDæŽ§åˆ¶æ–‡ä»¶
-**MPU6050**| MPU6050æŽ§åˆ¶æ–‡ä»¶
+**ADC** | µç³ØµçÑ¹¼ì²â
+**CONTROL** | ÖÐ¶Ï¿ØÖÆÎÄ¼þ
+**DataScope_DP** | MiniBalanceÉÏÎ»»úÍ¨Ñ¶
+**DHT11** | ÎÂÊª¶ÈÄ£¿é£¨Êý¾Ý¿Ú-PB12£©
+**DMP** | MPU6050 DMPÎÄ¼þ
+**ENCODER** | ±àÂë¹¦ÄÜÏà¹ØÎÄ¼þ
+**EXTI** | Íâ²¿ÖÐ¶Ï¿ØÖÆÎÄ¼þ
+**filter** | ÂË²¨ÎÄ¼þ
+**HC_SR04** | HC_SR04³¬Éù²¨²â¾à£¨ECHO-PB0£¬TRIG-PB1£©
+**IIC**| IICÏà¹ØÎÄ¼þ
+**KEY**| °´¼ü¿ØÖÆÎÄ¼þ
+**LED**| LED¿ØÖÆÎÄ¼þ£¨PA8£©
+**MOTIR** | µç»ú½Ó¿Ú³õÊ¼»¯
+**MPU6050**| MPU6050¿ØÖÆÎÄ¼þ
+**show** | OLEDÏÔÊ¾Ä£¿é
+**STMFLASH** | FLASH²Ù×÷
+**TIMER** | ¶¨Ê±Æ÷³õÊ¼»¯
+**USART2** | USART2Ä£¿é
 ### OBJ
 None
