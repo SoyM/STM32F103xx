@@ -160,11 +160,11 @@ void OLED_Init(void)
    	 
  	RCC->APB2ENR|=1<<3;    //使能PORTB时钟	   	 
 	GPIOB->CRH&=0XFF00FFFF; 
-	GPIOB->CRH|=0X00220000;//PB9 推挽输出   
+	GPIOB->CRH|=0X00220000;//PB12 13 推挽输出   
 
   RCC->APB2ENR|=1<<4;     	//使能PORTC时钟  
 	RCC->APB2ENR|=1<<0;     	//使能AFIO时钟	
-	GPIOC->CRH&=0X00FFFFFF;	//PC13,14,15设置成输出 2MHz 推挽输出   
+	GPIOC->CRH&=0X00FFFFFF;	//PC14,15设置成输出 2MHz 推挽输出   
 	GPIOC->CRH|=0X22000000; 
 	PWR->CR|=1<<8;	//取消备份区写保护 
 	RCC->BDCR&=0xFFFFFFFE;	//外部低俗振荡器关闭 PC14，PC15成为普通IO	 	
