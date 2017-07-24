@@ -12,24 +12,24 @@
 ### HARDWARE
 文件夹|功能
 ---|:---
-**ADC** | 电池电压检测
+**ADC** | 电池电压检测（PA4）
 **CONTROL** | 中断控制文件
 **DataScope_DP** | MiniBalance上位机通讯
 **DHT11** | 温湿度模块（数据口-PB12）
 **DMP** | MPU6050 DMP文件
-**ENCODER** | 编码功能相关文件
-**EXTI** | 外部中断控制文件
+**ENCODER** | 编码功能相关文件(TIM2-(PA0，PA1).TIM3-(PA6,PA7))
+**EXTI** | 外部中断控制文件（PB3）
 **filter** | 滤波文件
 **HC_SR04** | HC_SR04超声波测距（ECHO-PB0，TRIG-PB1）
-**IIC**| IIC相关文件
-**KEY**| 按键控制文件
+**IIC**| IIC相关文件（PB10，PB11）
+**KEY**| 按键控制文件（PA15）
 **LED**| LED控制文件（PA8）
-**MOTIR** | 电机接口初始化
+**MOTIR** | 电机接口初始化（PB8，PB9）
 **MPU6050**| MPU6050控制文件
 **OLED** | OLED显示(B12,B13,C14,C15)
 **show** | OLED显示，app发送数据，上位机显示
 **STMFLASH** | FLASH操作
 **TIMER** | 定时器初始化
-**USART2** | USART2模块
+**USART2** | USART2模块(PA2，PA3)
 ### OBJ
 None
