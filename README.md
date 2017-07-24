@@ -1,5 +1,6 @@
 # STM32F103xx
 基于STM32F103C8T6（ARM Cortex-M3内核）开发的项目，开发工具为keil uvision5和vs2017.
+>STM32F103C8T6是一款集成电路，芯体尺寸为32位，程序存储器容量是64KB，需要电压2V~3.6V，工作温度为-40°C ~ 85°C。
 ## 项目结构
 ### USER
 * **test.c** -主文件
@@ -33,3 +34,14 @@
 **USART2** | USART2模块(PA2，PA3)
 ### OBJ
 None
+
+## Others
+* **串口2**---PA2，PA3
+* **串口1**---PA9，PA10
+* **SWD调试接口**---PA13,PA14
+![](img/jtagtoswd.jpg)
+
+
+版权所有Copyright © 2017 by SoyM
+
+All rights reserved。
