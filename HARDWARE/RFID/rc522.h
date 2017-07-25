@@ -162,3 +162,5 @@ char PcdWrite(unsigned char addr,unsigned char *pData);
 char PcdRead(unsigned char addr,unsigned char *pData);
 char PcdHalt(void);
 void Reset_RC522(void);
+void iccardcode(void);
+

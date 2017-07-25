@@ -1,6 +1,8 @@
 #include "rc522.h"
 #include "delay.h"
-
+u8 RevBuffer[30]; 
+u8 MLastSelectedSnr[4];
+u8 DefaultKey[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}; 
 void delay_ns(u32 ns)
 {
   u32 i;
@@ -678,3 +680,99 @@ void PcdAntennaOff(void)
 
     return status;
 }*/
+
+void iccardcode(void)
+{	     
+  	unsigned char cmd;
+	unsigned char status;
+	RevBuffer[0]=1;
+	RevBuffer[1]=0;
+	RevBuffer[2]=RevBuffer[1];
+	cmd = RevBuffer[0];
+	switch(cmd)
+ 	{
+		case 1:     // Halt the card     //÷’÷πø®µƒ≤Ÿ◊˜
+			status= PcdHalt();;			
+			RevBuffer[0]=1;
+			RevBuffer[1]=status;
+			break;			
+		case 2:     // Request,Anticoll,Select,return CardType(2 bytes)+CardSerialNo(4 bytes)
+			        // —∞ø®£¨∑¿≥ÂÕª£¨—°‘Òø®    ∑µªÿø®¿‡–Õ£®2 bytes£©+ ø®œµ¡–∫≈(4 bytes)
+			status= PcdRequest(RevBuffer[1],&RevBuffer[2]);
+			if(status!=0)
+			{
+				status= PcdRequest(RevBuffer[1],&RevBuffer[2]);
+				if(status!=0)				
+				{
+					RevBuffer[0]=1;	
+					RevBuffer[1]=status;
+					break;
+				}
+			}  
+			RevBuffer[0]=3;	
+			RevBuffer[1]=status;
+			break;
+			
+		case 3:                         // ∑¿≥ÂÕª ∂¡ø®µƒœµ¡–∫≈ MLastSelectedSnr
+			status = PcdAnticoll(&RevBuffer[2]);
+			if(status!=0)
+			{
+				RevBuffer[0]=1;	
+				RevBuffer[1]=status;
+				break;
+			}
+			memcpy(MLastSelectedSnr,&RevBuffer[2],4);
+			RevBuffer[0]=5;
+			RevBuffer[1]=status;
+			break;	
+		case 4:		                    // —°‘Òø® Select Card
+			status=PcdSelect(MLastSelectedSnr);
+			if(status!=MI_OK)
+			{
+				RevBuffer[0]=1;	
+				RevBuffer[1]=status;
+				break;
+			}
+			RevBuffer[0]=3;
+			RevBuffer[1]=status;			
+			break;
+		case 5:	    // Key loading into the MF RC500's EEPROM
+      status = PcdAuthState(RevBuffer[1], RevBuffer[3], DefaultKey, MLastSelectedSnr);// –£—Èø®√‹¬Î
+			RevBuffer[0]=1;
+			RevBuffer[1]=status;			
+			break;							
+		case 6: 
+			RevBuffer[0]=1;
+			RevBuffer[1]=status;			
+			break;				
+		case 7:     
+    		RevBuffer[0]=1;
+			RevBuffer[1]=status;			
+			break;
+		case 8:     // Read the mifare card
+		            // ∂¡ø®
+			status=PcdRead(RevBuffer[1],&RevBuffer[2]);
+			if(status==0)
+			{RevBuffer[0]=17;}
+			else
+			{RevBuffer[0]=1;}
+			RevBuffer[1]=status;			
+			break;
+		case 9:     // Write the mifare card
+		            // –¥ø®  œ¬‘ÿ√‹¬Î
+			status=PcdWrite(RevBuffer[1],&RevBuffer[2]);
+			RevBuffer[0]=1;
+			RevBuffer[1]=status;			
+			break;
+		case 10:
+      //PcdValue(RevBuffer[1],RevBuffer[2],&RevBuffer[3]);
+			RevBuffer[0]=1;	
+			RevBuffer[1]=status;
+			break;
+		case 12:    // ≤Œ ˝…Ë÷√
+		  //PcdBakValue(RevBuffer[1], RevBuffer[2]);
+			RevBuffer[0]=1;	//contact
+			RevBuffer[1]=0;
+			break;		
+	}
+}

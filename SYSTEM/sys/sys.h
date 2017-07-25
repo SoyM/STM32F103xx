@@ -31,7 +31,7 @@
 #include "stmflash.h"
 #include "motor.h"
 #include "tcs3200.h"
-#include "rc522.h"
+//#include "rc522.h"
 
 extern u8 Way_Angle;                                      //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波
 extern int Encoder_Left,Encoder_Right;                     //左右编码器的脉冲计数
