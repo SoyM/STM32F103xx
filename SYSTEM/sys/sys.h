@@ -30,6 +30,8 @@
 #include "oled.h"
 #include "stmflash.h"
 #include "motor.h"
+#include "tcs3200.h"
+#include "rc522.h"
 
 extern u8 Way_Angle;                                      //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波
 extern int Encoder_Left,Encoder_Right;                     //左右编码器的脉冲计数
@@ -45,6 +47,7 @@ extern u8 Bi_zhang,delay_50,delay_flag,PID_Send,Flash_Send;
 extern float Acceleration_Z;
 extern float PA,PB,PC,PD;
 extern u16 PID_Parameter[10],Flash_Parameter[10];
+extern u16 amount;
 
 //0,不支持OS
 //1,支持OS

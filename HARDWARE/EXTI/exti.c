@@ -16,7 +16,15 @@ void EXTI_Init(void)
   GPIOB->ODR|=1<<3; //PB3 上拉	
 	Ex_NVIC_Config(GPIO_B,3,FTIR);		//下降沿触发
 	MY_NVIC_Init(2,1,EXTI3_IRQn,2);  	//抢占2，子优先级1，组2
+	
+	//GPIOB->CRL&=0XFFFFFFF0; 
+	//GPIOB->CRL|=0X00000008;//PB3上拉输入
+	//GPIOB->ODR|=1<<0; //PB0 上拉
+	//Ex_NVIC_Config(GPIO_B,0,RTIR);
+	//MY_NVIC_Init(2,1,EXTI0_IRQn,2);
 }
+
+
 
 
 

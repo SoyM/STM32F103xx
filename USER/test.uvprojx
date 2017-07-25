@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC_SR04;..\HARDWARE\OLED</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC_SR04;..\HARDWARE\OLED;..\HARDWARE\TCS3200;..\HARDWARE\RFID</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -518,6 +518,16 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\OLED\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcs3200.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TCS3200\tcs3200.c</FilePath>
+            </File>
+            <File>
+              <FileName>rc522.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\RFID\rc522.c</FilePath>
             </File>
           </Files>
         </Group>
