@@ -29,8 +29,10 @@
 **MOTIR** | 电机接口初始化（PB8，PB9）
 **MPU6050**| MPU6050控制文件
 **OLED** | OLED显示(B12,B13,C14,C15)
+**RFID** | 非接触式读写卡芯片(未完成)
 **show** | OLED显示，app发送数据，上位机显示
 **STMFLASH** | FLASH操作
+**TCS3200** | 颜色识别模块
 **TIMER** | 定时器初始化
 **USART2** | USART2模块(PA2，PA3)
 ### OBJ
