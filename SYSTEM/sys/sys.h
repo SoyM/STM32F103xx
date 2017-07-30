@@ -23,15 +23,16 @@
 #include "encoder.h"
 #include "show.h"
 #include "DataScope_DP.h"
-#include "DHT11.h"
 #include "usart2.h"
-#include "HC_SR04.h"
 #include "timer.h"
 #include "oled.h"
 #include "stmflash.h"
 #include "motor.h"
+//#include "HC_SR04.h"
+//#include "DHT11.h"
 //#include "tcs3200.h"
 //#include "rc522.h"
+//#include "pwm.h"
 
 extern u8 Way_Angle;                                      //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波
 extern int Encoder_Left,Encoder_Right;                     //左右编码器的脉冲计数
