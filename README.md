@@ -38,11 +38,46 @@
 ### OBJ
 None
 
-## Others
-* **串口2**---PA2，PA3
-* **串口1**---PA9，PA10
-* **SWD调试接口**---PA13,PA14
+## MARK
+**复用功能** | TIM4_REMAP=0 | TIM4_REMAP=1
+---|:---:|:---:
+TIME4_CH1 | PB6 | PD12
+TIME4_CH2 | PB7 | PD13
+TIME4_CH3 | PB8 | PD14
+TIME4_CH4 | PB9 | PD15
+
+**复用功能** | TIM3_REMAP[1:0]=00 | TIM3_REMAP[1:0]=10 | TIM3_REMAP[1:0]=11
+---|:---:|:---:|:---:
+TIME3_CH1 | PA6 | PB4 | PC6
+TIME3_CH2 | PA7 | PB5 | PC7
+TIME3_CH3 | PB0 | PB0 | PC8
+TIME3_CH4 | PB1 | PB1 | PC9
+
+**复用功能** | TIM2_REMAP[1:0]=00 | TIM2_REMAP[1:0]=01 | TIM2_REMAP[1:0]=10 | TIM2_REMAP[1:0]=11
+---|:---:|:---:|:---:|:---:
+TIME2_CH1/ETR | PA0 | PA15 | PA0 | PA15
+TIME2_CH2 | PA1 | PB3 | PA1 | PB3
+TIME2_CH3 | PA2 | PA2 | PB10 | PB10
+TIME2_CH4 | PA3 | PA3 | PB11 | PB11
+
+**复用功能** | TIM1_REMAP[1:0]=00 | TIM1_REMAP[1:0]=01 | TIM1_REMAP[1:0]=11
+---|:---:|:---:|:---:
+TIME1_ETR | PA12 | PA12 | PE7
+TIME1_CH1 | PA8 | PA8 | PE9
+TIME1_CH2 | PA9 | PA9 | PE11
+TIME1_CH3 | PA10 | PA10 | PE13
+TIME1_CH4 | PA11 | PA11 | PE14
+TIM1_BKIN | PB12 | PA6 | PE15
+TIM1_CH1N | PB13 | PA7 | PE8
+TIM1_CH2N | PB14 | PB0 | PE10
+TIM1_CH3N | PB15 | PB1 | PE12
+
 ![](img/jtagtoswd.jpg)
+![](img/I2C.jpg)
+![](img/SPI.png)
+![](img/USART1&USART2.png)
+![](img/USART3.png)
+
 
 
 版权所有Copyright © 2017 by SoyM
