@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\SYSTEM\doge;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC_SR04;..\HARDWARE\OLED;..\HARDWARE\TCS3200;..\HARDWARE\RFID;..\SYSTEM\pwm;..\HARDWARE\NRF24L01;..\SYSTEM\spi</IncludePath>
+              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\SYSTEM\doge;..\HARDWARE\ADC;..\HARDWARE\CONTROL;..\HARDWARE\DataScope_DP;..\HARDWARE\DHT11;..\HARDWARE\DMP;..\HARDWARE\ENCODER;..\HARDWARE\EXTI;..\HARDWARE\filter;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\LED;..\HARDWARE\MOTOR;..\HARDWARE\MPU6050;..\HARDWARE\show;..\HARDWARE\STMFLASH;..\HARDWARE\TIMER;..\HARDWARE\USART2;..\HARDWARE\HC_SR04;..\HARDWARE\OLED;..\HARDWARE\TCS3200;..\HARDWARE\RFID;..\SYSTEM\pwm;..\HARDWARE\NRF24L01;..\SYSTEM\spi;..\HARDWARE\Qingxie;..\SYSTEM\dac</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -428,6 +428,11 @@
               <FileName>spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\spi\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\dac\dac.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -548,6 +553,11 @@
               <FileName>24l01.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\NRF24L01\24l01.c</FilePath>
+            </File>
+            <File>
+              <FileName>Qingxie.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Qingxie\Qingxie.c</FilePath>
             </File>
           </Files>
         </Group>

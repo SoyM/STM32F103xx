@@ -18,7 +18,8 @@ u8 R=0x00,G=0x00,B=0x00;
 float Max=0,Min=0;
 float Rhsv=0,Ghsv=0,Bhsv=0;
 float H=0,S=0,V=0;
-
+float adc2;
+u16 adc1;
 int main(void)
 {								  
 	Stm32_Clock_Init(9);
@@ -28,7 +29,7 @@ int main(void)
 	LED_Init();
 	KEY_Init();
 	//OLED_Init();  
-	uart_init(72,128000);
+	uart_init(72,115200);
 	printf("begin");
 	//uart2_init(36,9600);
 	//MiniBalance_PWM_Init(7199,0);
@@ -38,7 +39,7 @@ int main(void)
 	//MPU6050_initialize();
 	//DMP_Init();
 	//Flash_Read(); 
-	EXTI_Init();  
+	//EXTI_Init();  
 	//DHT11_init();
 	//HC_SR04_init();
 	//TIM3_Cap_Init(0XFFFF,71);
@@ -46,9 +47,15 @@ int main(void)
 	//-whitebalance();
 	//LED=0;
 	//InitRc522();
+	//NRF24L01_Init();
+	//NRF24L01_FindMyself(); 
+	//Qingxie_Init();
+	//Adc_Init();
+	Dac1_Init();
+	Dac1_Set_Vol(3300);
  	while(1)
-	{
-/*	if(Flash_Send==1)          //写入PID参数到Flash,由app控制该指令
+	{/*
+	if(Flash_Send==1)          //写入PID参数到Flash,由app控制该指令
 		{
 			Flash_Write();	
 			Flash_Send=0;	
@@ -78,6 +85,16 @@ int main(void)
 		///B = tcs3200_BLUE();	 
 		///en=1;
 		///printf("R-%d,G-%d,B-%d\n",R,G,B);
+		//NRF24L01();
+		//Qingxie_check();
+		//adc1=Get_Adc(4);
+		//printf("%d\n",adc1);
+		//adc2=(float)adc1*(3.3/4096);
+		//printf("V=%f\n",adc2);
+		LED=~LED;
+		DAC->DHR12R1=100;
+		adc1=GPIOA->CRL;
+		printf("%d",adc1);
 		delay_ms(1000);
 	}		 
 }

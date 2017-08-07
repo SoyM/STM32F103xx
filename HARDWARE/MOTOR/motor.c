@@ -2,16 +2,16 @@
 void MiniBalance_Motor_Init(void)
 {
 	RCC->APB2ENR|=1<<3;       //PORTB时钟使能   
-	GPIOB->CRL&=0X0000FFFF;   //PORTB12 13 14 15推挽输出
-	GPIOB->CRL|=0X22220000;   //PORTB12 13 14 15推挽输出
+	GPIOB->CRL&=0X0000FFFF;   //PORTB4 5 6 7推挽输出
+	GPIOB->CRL|=0X22220000;   
 }
 void MiniBalance_PWM_Init(u16 arr,u16 psc)
 {		 					 
 	MiniBalance_Motor_Init(); //初始化电机控制所需IO
 	RCC->APB1ENR|=1<<2;       //TIM4时钟使能    
 	RCC->APB2ENR|=1<<3;       //PORTB时钟使能     
-	GPIOB->CRH&=0XFFFFFF00;   //PORTB0 1复用输出
-	GPIOB->CRH|=0X000000BB;   //PORTB0 1复用输出
+	GPIOB->CRH&=0XFFFFFF00;   //PORTB8 9复用输出
+	GPIOB->CRH|=0X000000BB;   
 	TIM4->ARR=arr;//设定计数器自动重装值 
 	TIM4->PSC=psc;//预分频器不分频
 	TIM4->CCMR2|=6<<12;//CH4 PWM1模式	

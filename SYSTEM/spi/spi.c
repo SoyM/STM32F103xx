@@ -54,7 +54,7 @@ void SPIx_SetSpeed(u8 SpeedSet)
 	}
 	SPI1->CR1|=1<<6; //SPI设备使能	  
 } 
-//SPIx 读写一个字节
+//读写一个字节
 //TxData:要写入的字节
 //返回值:读取到的字节
 u8 SPIx_ReadWriteByte(u8 TxData)

@@ -4,7 +4,8 @@
 #define Battery_Ch 4
 void Adc_Init(void);
 u16 Get_Adc(u8 ch);
-int Get_battery_volt(void);   
+int Get_battery_volt(void);  
+u16 Get_Adc_Average(u8 ch,u8 times);
 #endif 
 
 

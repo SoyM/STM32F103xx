@@ -30,8 +30,12 @@ u8 NRF24L01_Check(void)
 	SPIx_SetSpeed(SPI_SPEED_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）   	 
 	NRF24L01_Write_Buf(WRITE_REG2+TX_ADDR,buf,5);//写入5个字节的地址.	
 	NRF24L01_Read_Buf(TX_ADDR,buf,5); //读出写入的地址  
-	for(i=0;i<5;i++)if(buf[i]!=0XA5)break;	 							   
-	if(i!=5)return 1;//检测24L01错误	
+	for(i=0;i<5;i++){
+		if(buf[i]!=0XA5)
+			break;
+	}	 							   
+	if(i!=5)
+		return 1;//检测24L01错误	
 	return 0;		 //检测到24L01
 }	 	 
 //SPI写寄存器
@@ -65,11 +69,13 @@ u8 NRF24L01_Read_Reg(u8 reg)
 u8 NRF24L01_Read_Buf(u8 reg,u8 *pBuf,u8 len)
 {
 	u8 status,u8_ctr;	       
-  	NRF24L01_CSN = 0;           //使能SPI传输
-  	status=SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值   	   
- 	for(u8_ctr=0;u8_ctr<len;u8_ctr++)pBuf[u8_ctr]=SPIx_ReadWriteByte(0XFF);//读出数据
-  	NRF24L01_CSN=1;       //关闭SPI传输
-  	return status;        //返回读到的状态值
+  NRF24L01_CSN = 0;           //使能SPI传输
+  status=SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值   	   
+ 	for(u8_ctr=0;u8_ctr<len;u8_ctr++){
+		pBuf[u8_ctr]=SPIx_ReadWriteByte(0XFF);//读出数据
+	}
+  NRF24L01_CSN=1;       //关闭SPI传输
+  return status;        //返回读到的状态值
 }
 //在指定位置写指定长度的数据
 //reg:寄存器(位置)
@@ -80,10 +86,11 @@ u8 NRF24L01_Write_Buf(u8 reg, u8 *pBuf, u8 len)
 {
 	u8 status,u8_ctr;	    
  	NRF24L01_CSN = 0;          //使能SPI传输
-  	status = SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值
-  	for(u8_ctr=0; u8_ctr<len; u8_ctr++)SPIx_ReadWriteByte(*pBuf++); //写入数据	 
-  	NRF24L01_CSN = 1;       //关闭SPI传输
-  	return status;          //返回读到的状态值
+	status = SPIx_ReadWriteByte(reg);//发送寄存器值(位置),并读取状态值
+	for(u8_ctr=0; u8_ctr<len; u8_ctr++)
+		SPIx_ReadWriteByte(*pBuf++); //写入数据	 
+	NRF24L01_CSN = 1;       //关闭SPI传输
+	return status;          //返回读到的状态值
 }				   
 //启动NRF24L01发送一次数据
 //txbuf:待发送数据首地址
@@ -164,8 +171,8 @@ void TX_Mode(void)
 
 void NRF24L01(void)
 {
-	u8 mode=0;	 
-	u8 tmp_buf[33];
+	u8 mode=1;	 
+	u8 tmp_buf[33]={66,66,66,66};
 if(mode==0)//RX模式
 	{
 		RX_Mode();		  
@@ -173,21 +180,25 @@ if(mode==0)//RX模式
 		{	  		    		    				 
 			if(NRF24L01_RxPacket(tmp_buf)==0)//一旦接收到信息,则显示出来.
 			{
-			
-			}else delay_us(100);	   
-				    
+				printf("%d\r\n",tmp_buf[1]); 
+			}else 
+				delay_us(100);	   		    
 		};	
 	}else//TX模式
 	{							    
 		TX_Mode();
+		printf("\nTX\n");
 		while(1)	
 		{	  
-       
-						if(NRF24L01_TxPacket(tmp_buf)==TX_OK)
-						{
-							 printf("%d\r\n",tmp_buf[1]); 
-						}else							   	
-						delay_ms(10);				    
+				if(NRF24L01_TxPacket(tmp_buf)==TX_OK)
+				{
+					
+					 printf("%d\r\n",tmp_buf[1]); 
+					printf("\nTX-success\n");
+				}else{							   	
+				delay_ms(100);
+				printf("\nTX-fail\n");					
+				}		    
 		}
 	}     	  
 }
