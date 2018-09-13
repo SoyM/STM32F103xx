@@ -82,4 +82,4 @@ TIM1_CH3N | PB15 | PB1 | PE12
 
 版权所有Copyright © 2017 by SoyM
 
-All rights reserved。
+All rights reserved.
